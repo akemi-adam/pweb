@@ -14,8 +14,9 @@
     </div>
     <script>
         function carregarDiv() {
+            const html = `<h1>Guinness</h1>`
             const div = document.getElementById('meu amor')
-            div.innerHTML = `<h1>Guinness</h1>`
+            div.innerHTML = div.innerHTML != html ? html : null
         }
 
         const button = document.getElementById('botaoCarregar')
