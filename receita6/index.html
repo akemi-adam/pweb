@@ -30,6 +30,7 @@
     <div class="flex-col container">
         <table id="cervejasTable"></table>
         <button id="botaoCarregar">Carregando cervejas...</button>
+        <table id="tableTest"></table>
     </div>
 </body>
 <script>
@@ -54,8 +55,8 @@
         }
     ]
 
-    const loadTable = cs => {
-        const table = document.getElementById("cervejasTable")
+    const loadTable = (cs, id) => {
+        const table = document.getElementById(id)
         const itensHtml = cs.map(item => `<tr>
             <td>${item.name}</td>
             <td>${item.alcohol}</td>
@@ -74,6 +75,6 @@
     }
 
     const botao = document.getElementById("botaoCarregar")
-    botao.addEventListener("click", () => loadTable(cervejas))
+    botao.addEventListener("click", () => loadTable(cervejas, 'cervejasTable'))
 </script>
 </html>
