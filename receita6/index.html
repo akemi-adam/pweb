@@ -21,7 +21,7 @@
         }
 
         .container {
-            width: 10em;
+            width: 20em;
         }
 
     </style>
@@ -36,23 +36,40 @@
     const cervejas = [
         {
             name: "Guiness",
-            alcohol: "10%"
+            alcohol: "10%",
+            style: 'Red Ale',
+            ibu: '10',
         },
         {
             name: "Desperados",
-            alcohol: "6%"
+            alcohol: "6%",
+            style: 'English IPA',
+            ibu: '20',
         },
         {
             name: "Becks",
-            alcohol: "5%"
+            alcohol: "5%",
+            style: 'Imperial Stout',
+            ibu: '30',
         }
     ]
 
     const loadTable = cs => {
         const table = document.getElementById("cervejasTable")
-        const itensHtml = cs.map(item => `<tr><td>${item.name}</td><td>${item.alcohol}</td></tr>`)
+        const itensHtml = cs.map(item => `<tr>
+            <td>${item.name}</td>
+            <td>${item.alcohol}</td>
+            <td>${item.style}</td>
+            <td>${item.ibu}</td>
+        </tr>`)
 
-        table.innerHTML = `<tr><th>Nome</th><th>Álcool</th></tr>`
+        table.innerHTML = `<tr>
+            <th>Nome</th>
+            <th>Álcool</th>
+            <th>Estilo</th>
+            <th>IBU</th>
+        </tr>`
+        
         table.innerHTML += `${itensHtml.join("\n")}`
     }
 
