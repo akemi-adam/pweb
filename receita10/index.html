@@ -2,6 +2,22 @@
 <html>
 <head>
     <title>ReactZero</title>
+    <style>
+        th {
+            border: solid black 1px;
+            color: white;
+            background-color: rgb(49, 49, 49);
+        }
+
+        td {
+            text-align: center;
+            border: solid black 1px;
+        }
+
+        .container {
+            width: 30em;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -46,7 +62,7 @@
         let showed = false
 
         ReactDOM.render(
-            <div>
+            <div className="container">
                 <Cabecalho />
                 <div id="table-space"></div>
                 <TabelaBedidas bebidas={getBebidas()} />
