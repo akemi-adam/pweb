@@ -5,10 +5,12 @@
 </head>
 <body>
     <div><button id="botaoCarregar">Carregando cervejas...</button></div>
-    <div id="cervejasDiv"></div>
+    <table id="cervejasTable">
+
+    </table>
 </body>
 <script>
-    let cervejas = [
+    const cervejas = [
         {
             name: "Guiness",
             alcohol: "10%"
@@ -23,17 +25,15 @@
         }
     ]
 
-    const carregarDiv = cs => {
-
-        const div = document.getElementById("cervejasDiv")
-
-        const itensHtml = cs.map(item => `<div>${item['name']} -- ${item['alcohol']}</div>`)
-
-        div.innerHTML = `${itensHtml.join("\n")}`
-
+    const loadTable = cs => {
+        const table = document.getElementById("cervejasTable")
+        const itensHtml = cs.map(item => `<tr><td>${item.name}</td><td>${item.alcohol}</td></tr>`)
+        
+        table.innerHTML = `<tr><th>Nome</th><th>Álcool</th></tr>`
+        table.innerHTML = `${itensHtml.join("\n")}`
     }
 
     const botao = document.getElementById("botaoCarregar")
-    botao.addEventListener("click", () => carregarDiv(cervejas))
+    botao.addEventListener("click", () => loadTable(cervejas))
 </script>
 </html>
