@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        th {
+            border: solid black 1px;
+            color: white;
+            background-color: rgb(49, 49, 49);
+        }
+
+        td {
+            text-align: center;
+            border: solid black 1px;
+        }
+
+        .flex-col {
+            display: flex;
+            row-gap: 1em;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 20em;
+        }
+    </style>
+</head>
+<body>
+    <div><button id="botaoCarregar">Carregando cervejas...</button></div>
+    <table id="cervejasTable"></table>
+    <script src="./index.js"></script>
+</body>
+</html>
