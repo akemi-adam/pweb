@@ -27,6 +27,7 @@
         <div class="flex">
             <button id="botaoCarregar">Carregando cervejas...</button>
             <button id="botaoOrdenar">Mostrar cervejas ordenadas</button>
+            <button id="botaoEmbaralhar">Mostrar cervejas embaralhadas</button>
         </div>
 
     </div>
@@ -44,10 +45,25 @@
             `
         }
 
+        /*
+         * A atividade pedia para escolher uma função que embaralhasse o array, a escolhida foi essa
+         * https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+         */
+        function shuffleArr (array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var rand = Math.floor(Math.random() * (i + 1));
+                [array[i], array[rand]] = [array[rand], array[i]]
+            }
+
+            return array
+        }
+
         let botao = document.getElementById("botaoCarregar")
         botao.addEventListener("click", () => carregarDiv(cervejas))
 
         document.getElementById('botaoOrdenar').addEventListener('click', () => carregarDiv(cervejas.sort()))
+
+        document.getElementById('botaoEmbaralhar').addEventListener('click', () => carregarDiv(shuffleArr(cervejas)))
     </script>
 </body>
 </html>
