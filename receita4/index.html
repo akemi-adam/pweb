@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receita 4</title>
+    <style>
+        .flex {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1em;
+        }
+
+        .cerveja-item {
+            width: 10em;
+            text-align: center;
+            border: solid black 1px;
+            border-radius: 20px;
+        }
+    </style>
 </head>
 <body>
     <div id="meu amor"><button id="botaoCarregar">Carregando cervejas...</button></div>
@@ -11,11 +25,12 @@
         let cervejas = ["Guiness", "Desperados", "Becks"]
 
         function transformar(item){
-           return `<div>${item}</div>`
+           return `<div class="cerveja-item">${item}</div>`
         }
   
         function carregarDiv(){
            let div = document.getElementById("meu amor")
+           div.classList.add('flex')
            let cervejasHtml = cervejas.map(transformar) 
            div.innerHTML = `${cervejasHtml.join("\n")}`
         }
