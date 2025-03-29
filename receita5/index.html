@@ -25,9 +25,9 @@
 <body>
     <div id="meu amor">
         <div class="flex">
-            <button id="botaoCarregar">Carregando jogos...</button>
-            <button id="botaoOrdenar">Mostrar jogos ordenadas</button>
-            <button id="botaoEmbaralhar">Mostrar jogos embaralhadas</button>
+            <a href="" id="botaoCarregar">Carregando jogos...</a>
+            <a href="" id="botaoOrdenar">Mostrar jogos ordenadas</a>
+            <a href="" id="botaoEmbaralhar">Mostrar jogos embaralhadas</a>
         </div>
 
     </div>
@@ -67,7 +67,10 @@
         }
 
         function makeAction(id, games) {
-            document.getElementById(id).addEventListener('click', () => loadDiv(games))
+            document.getElementById(id).addEventListener('click', (e) => {
+                e.preventDefault()
+                loadDiv(games)
+            })
         }
 
         document.addEventListener('DOMContentLoaded', () => {
