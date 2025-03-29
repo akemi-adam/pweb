@@ -12,7 +12,6 @@
     <script src="libs/babel.js"></script>
     <script type="text/babel">
         function TabelaBedidas() {
-
             return <table id="tabela" border="1">
                 <thead>
                     <tr>
@@ -29,8 +28,15 @@
             </table>
         }
 
+        function Cabecalho() {
+            return <h1>Minha Tabela de bebidas</h1>
+        }
+
         ReactDOM.render(
-            <TabelaBedidas />,
+            <div>
+                <Cabecalho />
+                <TabelaBedidas />
+            </div>,
             document.getElementById('app')
         )
     </script>
