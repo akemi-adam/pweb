@@ -1,0 +1,44 @@
+p.verso{
+    color: blue;
+}
+
+p.mote {
+    color: red;
+}
+
+a.link:visited {
+    color: hotpink;
+}
+
+a.link:hover {
+    color: greenyellow;
+}
+
+.avatar {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+.poeta img {
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+.table {
+    border-collapse: separate;
+}
+
+th, td {
+    border: 1px solid black;
+}
+
+th {
+    background-color: rgb(60, 60, 203);
+    color: white;
+}
+
+td {
+    background-color: rgb(234, 233, 233);
+}
