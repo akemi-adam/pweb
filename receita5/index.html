@@ -16,7 +16,7 @@
             background-color: rgb(49, 49, 49);
         }
 
-        .cerveja-item {
+        .item {
             text-align: center;
             border: solid black 1px;
         }
@@ -25,22 +25,30 @@
 <body>
     <div id="meu amor">
         <div class="flex">
-            <button id="botaoCarregar">Carregando cervejas...</button>
-            <button id="botaoOrdenar">Mostrar cervejas ordenadas</button>
-            <button id="botaoEmbaralhar">Mostrar cervejas embaralhadas</button>
+            <button id="botaoCarregar">Carregando jogos...</button>
+            <button id="botaoOrdenar">Mostrar jogos ordenadas</button>
+            <button id="botaoEmbaralhar">Mostrar jogos embaralhadas</button>
         </div>
 
     </div>
     <script>
-        let cervejas = ["Guiness", "Desperados", "Becks"]
+        function getGames() {
+            return [
+                'Donkey Kong Country 2',
+                'Super Bomberman 4',
+                'Mickey & Donald',
+                'Chrono Trigger',
+                'Illusion Of Gaia',
+            ]
+        }
 
-        function carregarDiv(items) {
-            let div = document.getElementById("meu amor")
-            let cervejasHtml = items.map((item) => `<tr><td class="cerveja-item">${item}</td></tr>`)
+        function loadDiv(games) {
+            const div = document.getElementById("meu amor")
+            const rows = games.map((game) => `<tr><td class="item">${game}</td></tr>`)
             div.innerHTML = `
                 <table>
-                    <tr><th>Cerveja</th></tr>
-                    ${cervejasHtml.join('\n')}
+                    <tr><th>Jogo</th></tr>
+                    ${rows.join('\n')}
                 </table>
             `
         }
@@ -50,20 +58,23 @@
          * https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
          */
         function shuffleArr (array) {
-            for (var i = array.length - 1; i > 0; i--) {
-                var rand = Math.floor(Math.random() * (i + 1));
+            for (let i = array.length - 1; i > 0; i--) {
+                const rand = Math.floor(Math.random() * (i + 1));
                 [array[i], array[rand]] = [array[rand], array[i]]
             }
 
             return array
         }
 
-        let botao = document.getElementById("botaoCarregar")
-        botao.addEventListener("click", () => carregarDiv(cervejas))
+        function makeAction(id, games) {
+            document.getElementById(id).addEventListener('click', () => loadDiv(games))
+        }
 
-        document.getElementById('botaoOrdenar').addEventListener('click', () => carregarDiv(cervejas.sort()))
-
-        document.getElementById('botaoEmbaralhar').addEventListener('click', () => carregarDiv(shuffleArr(cervejas)))
+        document.addEventListener('DOMContentLoaded', () => {
+            makeAction('botaoCarregar', getGames())
+            makeAction('botaoOrdenar', getGames().sort())
+            makeAction('botaoEmbaralhar', shuffleArr(getGames()))
+        })
     </script>
 </body>
 </html>
