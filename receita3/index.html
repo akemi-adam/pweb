@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receita 3</title>
+    <style>
+        #meuAmor {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .fadeIn {
+            opacity: 1 !important;
+        }
+        
+        .fadeOut {
+            opacity: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="meuAmor" class="fadeOut"></div>
+    <div>
+        <button id="botaoCarregar">Carregando cervejas...</button>
+    </div>
+    <script>
+        function carregarDiv() {
+            const html = `<h1>Guinness</h1>`
+            const div = document.getElementById('meuAmor')
+            
+            if (div.innerHTML.trim() === '') {
+                div.innerHTML = html
+                div.classList.remove('fadeOut')
+                div.classList.add('fadeIn')
+            } else {
+                div.classList.remove('fadeIn')
+                div.classList.add('fadeOut')
+                setTimeout(() => div.innerHTML = '', 500)
+            }
+        }
+
+        const button = document.getElementById('botaoCarregar')
+        button.addEventListener('click', carregarDiv)
+    </script>
+</body>
+</html>
