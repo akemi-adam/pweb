@@ -11,19 +11,30 @@
     <script src="libs/react-dom.js"></script>
     <script src="libs/babel.js"></script>
     <script type="text/babel">
-        function TabelaBedidas() {
-            return <table id="tabela" border="1">
+        function getBebidas() {
+            return [
+                {name: 'Coca-cola', price: 7},
+                {name: 'Pepsi', price: 10},
+                {name: 'Fanta Laranja', price: 5},
+                {name: 'Cachaça', price: 0},
+            ]
+        }
+
+        function TabelaBedidas({bebidas}) {
+            return <table id="tabela" border="1" style={{ display: 'none' }}>
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Marca</th>
+                        <th>Preço</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Havana</td>
-                        <td>Engenho Anísio Santiago</td>
-                    </tr>
+                    {bebidas.map((bebida, index) => {
+                        return <tr key={index}>
+                            <td>{bebida.name}</td>
+                            <td>{bebida.price}</td>
+                        </tr>
+                    })}
                 </tbody>
             </table>
         }
@@ -32,10 +43,14 @@
             return <h1>Minha Tabela de bebidas</h1>
         }
 
+        let showed = false
+
         ReactDOM.render(
             <div>
                 <Cabecalho />
-                <TabelaBedidas />
+                <div id="table-space"></div>
+                <TabelaBedidas bebidas={getBebidas()} />
+                <button onClick={ () => {document.getElementById('tabela').style.display = 'block'} }>Mostrar</button>
             </div>,
             document.getElementById('app')
         )
