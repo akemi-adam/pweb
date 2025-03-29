@@ -10,11 +10,11 @@ const makeTable = (cs, headers, properties, id = 'cervejasTable') => {
     table.innerHTML += `${rows.join("\n")}`
 }
 
-async function loadData() {
+async function loadData(headers, properties, resource) {
     try {
-        const res = await fetch("https://random-data-api.com/api/v2/users?size=5")
+        const res = await fetch(`https://random-data-api.com/api/v2/${resource}?size=5`)
         const data = await res.json()
-        makeTable(data, ['Nome', 'Sobrenome', 'E-mail', 'Senha'], ['first_name', 'last_name', 'email', 'password'], 'content-table')
+        makeTable(data, headers, properties, 'content-table')
     } catch (err) {
         console.error(err)
         document.getElementById("content-table").innerHTML = "Fudeu..."
@@ -22,4 +22,5 @@ async function loadData() {
 }
 
 const botao = document.getElementById("botaoCarregar")
-botao.addEventListener("click", () => loadData())
+// botao.addEventListener("click", () => loadData(['Nome', 'Sobrenome', 'E-mail', 'Senha'], ['first_name', 'last_name', 'email', 'password'], 'users'))
+botao.addEventListener("click", () => loadData(['Nome', 'Álcool', 'Estilo', 'Amargor'], ['name', 'alcohol', 'style', 'ibu'], 'beers'))
