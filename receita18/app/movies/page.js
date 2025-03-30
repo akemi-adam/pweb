@@ -20,11 +20,16 @@ export default function Movies() {
     }
 
     return (
-        <div>
-            <h2>Procurar filme</h2>
-            <MovieForm action={action} />
-            <h2>Lista de filmes</h2>
-            {founded ? <MovieList movies={movies} /> : <p>Nenhum filme encontrado</p>}
+        <div className='flex flex-col gap-y-8 mb-10'>
+            <h2 className='text-center text-[2em] font-semibold pt-8'>Procurar filme</h2>
+            <div className='w-96 flex flex-col gap-y-4 mx-auto'>
+                <div className='border rounded-md p-4'>
+                    <MovieForm action={action} />
+                </div>
+                <div className='border rounded-md p-4'>
+                    {founded ? <MovieList movies={movies} /> : <div className='border rounded-md border-red-700 bg-red-200 p-2'>Nenhum filme encontrado!</div>}
+                </div>
+            </div>
         </div>
     )
 }
