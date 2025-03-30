@@ -14,7 +14,7 @@ export function MovieForm({setMovies, setLoading}) {
 
     const fetchMovies = async () => {
         try {
-            const response = await fetch(`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${title}&type=${type}`)
+            const response = await fetch(`http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}&s=${title}&type=${type}`)
             const data = await response.json()
             setMovies(data.Search)
         } catch (error) {
