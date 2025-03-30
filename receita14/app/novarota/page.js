@@ -8,7 +8,7 @@ export default function NovaRotaHome() {
         <div>
             <h1>Nova Rota, Nova Página</h1>
             <MariaPrea />
-            <DefaultList />
+            <DefaultList items={['Pipoca', 'Miojo', 'Bolacha Recheada', 'Tang', 'Banquete']} />
             <FirstRoute />
         </div>
     )

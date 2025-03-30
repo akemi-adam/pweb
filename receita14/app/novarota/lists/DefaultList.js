@@ -1,10 +1,7 @@
-export default function DefaultList() {
+export default function DefaultList({items}) {
     return (
         <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
+            {items.map((item, index) => <li key={index}>{item}</li>)}
         </ul>
     )
 }
