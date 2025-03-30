@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default async function Home({searchParams}) {
     const {titleSearchKey = 'bagdad', type = 'movie'} = await searchParams
@@ -11,7 +12,10 @@ export default async function Home({searchParams}) {
                 <h1>Viva Santana!</h1>
                 <h2>Lista de filmes</h2>
                 <ul>
-                    {data['Search'].map(movie => <li key={movie.imdbID}>{movie.Title} --- {movie.Year}</li>)}
+                    {data['Search'].map(movie => <li key={movie.imdbID}>
+                        <img src={movie.Poster} alt="" />
+                        {movie.Title} --- {movie.Year}
+                    </li>)}
                 </ul>
                 <ul>
                     <li><Link href='/rota1'>Rota 1</Link></li>
