@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReactZero</title>
+    <style>
+        th {
+            border: solid black 1px;
+            color: white;
+            background-color: rgb(49, 49, 49);
+        }
+
+        td {
+            text-align: center;
+            border: solid black 1px;
+        }
+
+        .container {
+            width: 30em;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/babel.js"></script>
+    <script type="text/babel">
+        const TabelaBebidas = ({ titulo, cabecalhos }) => {
+            return (
+                <div>
+                    <h1>{titulo}</h1>
+                    <table id="tabela" border="1">
+                        <thead>
+                            <tr>
+                                {cabecalhos.map(cabecalho => <th>{cabecalho}</th>)}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }
+
+        const valoresCabecalhos = ["Nome", "Marca"]
+
+        ReactDOM.render(
+            <TabelaBebidas titulo="minha tabela de cana" cabecalhos={valoresCabecalhos} />,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+</html>
