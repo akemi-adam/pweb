@@ -1,19 +1,18 @@
+'use client';
 
+import { useState } from 'react'
+import { MovieList, MovieForm } from './components'
 
-export default async function Movies({searchParams}) {
-    const {titleSearchKey = 'bagdad', type = 'movie'} = await searchParams
-    const response = await fetch(`http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${titleSearchKey}&type=${type}`)
-    const data = await response.json()
+export default function Movies() {
+    const [movies, setMovies] = useState([])
+    const [loading, setLoading] = useState(true)
 
     return (
         <div>
+            <h2>Procurar filme</h2>
+            <MovieForm setMovies={(movies) => setMovies(movies)} setLoading={(status) => setLoading(status)} />
             <h2>Lista de filmes</h2>
-            <ul>
-                {data['Search'].map(movie => <li key={movie.imdbID}>
-                    <img src={movie.Poster} alt="" />
-                    {movie.Title} --- {movie.Year}
-                </li>)}
-            </ul>
+            {loading ? <p>Nenhum filme encontrado</p> : <MovieList movies={movies} />}
         </div>
     )
 }

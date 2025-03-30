@@ -9,7 +9,7 @@ export default async function Home() {
                     <li><Link href='/rota1'>Rota 1</Link></li>
                     <li><Link href='/novarota'>Nova rota</Link></li>
                     <li><Link href='/rota1/teste'>Sub rota da rota 1</Link></li>
-                    <li><Link href='/movieSearch'>Procurar filme</Link></li>
+                    <li><Link href='/movies'>Procurar filme</Link></li>
                 </ul>
             </div>
         </div>
