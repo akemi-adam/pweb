@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ReactZero</title>
+    <style>
+        th {
+            border: solid black 1px;
+            color: white;
+            background-color: rgb(49, 49, 49);
+        }
+
+        td {
+            text-align: center;
+            border: solid black 1px;
+        }
+
+        .container {
+            width: 30em;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="libs/react.js"></script>
+    <script src="libs/react-dom.js"></script>
+    <script src="libs/babel.js"></script>
+    <script type="text/babel">
+        const TabelaBebidas = ({ titulo, conteudo, cabecalhos }) => {
+            return (
+                <div>
+                    <h1>{titulo}</h1>
+                    <table id="tabela" border="1">
+                        <thead>
+                            <tr>
+                                {cabecalhos.map((cabecalho, index) => <th key={index}>{cabecalho}</th>)}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {conteudo.map((data, index) => {
+                                const itens = []
+                                for (let key in data) itens.push(data[key])
+
+                                return (
+                                    <tr key={index}>
+                                        {itens.map((item, index) => <td key={index}>{item}</td>)}
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }
+
+        const valoresCabecalhos = ["Nome", "Marca", "Ano"]
+        const conteudo = [
+            {
+                nome: 'Havana', marca: 'Engenho Anísio Santiago', year: '2000',
+            },
+            {
+                nome: 'Havana 2', marca: 'Engenho Anísio Santiago 12', year: '2014',
+            },
+            {
+                nome: 'Teste 3', marca: 'SeridóPlast', year: '2004',
+            }
+        ]
+
+        ReactDOM.render(
+            <TabelaBebidas titulo="minha tabela de cana" cabecalhos={valoresCabecalhos} conteudo={conteudo} />,
+            document.getElementById("app")
+        )
+    </script>
+</body>
+</html>
