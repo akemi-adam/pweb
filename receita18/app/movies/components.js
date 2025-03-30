@@ -1,16 +1,21 @@
 import Form from 'next/form'
+import { useState } from 'react'
 
 
 export function MovieForm({action}) {
+    const [buttonStatus, setButtonStatus] = useState(false)
+
     const types = [
         {value: 'movie', label: 'Filme'},
         {value: 'series', label: 'Série'},
         {value: 'episode', label: 'Episódio'},
     ]
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        action(new FormData(e.currentTarget))
+        setButtonStatus(true)
+        await action(new FormData(e.currentTarget))
+        setButtonStatus(false)
     }
 
     return (
@@ -21,7 +26,7 @@ export function MovieForm({action}) {
             <select name='type' id='type'>
                 {types.map((type, index) => <option value={type.value} key={index}>{type.label}</option>)}
             </select>
-            <button type='submit'>
+            <button type='submit' disabled={buttonStatus}>
                 Pesquisar
             </button>
         </Form>
