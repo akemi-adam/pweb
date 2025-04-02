@@ -5,7 +5,7 @@ export default async function Home() {
         <div>
             <div>
                 <h1>Viva Santana!</h1>
-                <ul>
+                <ul className='text-blue-500 underline'>
                     <li><Link href='/rota1'>Rota 1</Link></li>
                     <li><Link href='/novarota'>Nova rota</Link></li>
                     <li><Link href='/rota1/teste'>Sub rota da rota 1</Link></li>
@@ -17,9 +17,7 @@ export default async function Home() {
 }
 
 export function Title({title}) {
-    return (
-        <h1>{title}</h1>
-    )
+    return <h1>{title}</h1>
 }
 
 export function Table() {
